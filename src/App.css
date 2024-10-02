@@ -1,178 +1,189 @@
 /* src/App.css */
 
 body {
-  font-family: 'Orbitron', sans-serif; /* Futuristic font */
-  background: linear-gradient(135deg, #0f0f0f, #1f1f1f); /* Dark gradient background */
-  color: #fff; /* White text for contrast */
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden; /* Prevent horizontal scrolling */
+    font-family: 'Orbitron', sans-serif; /* Futuristic font */
+    background: linear-gradient(135deg, #0f0f0f, #1f1f1f); /* Dark gradient background */
+    color: #fff; /* White text for contrast */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
 h1, h2 {
-  text-align: center;
-  color: #00ffc6; /* Neon cyan for headings */
-  text-shadow: 0 0 10px #00ffc6, 0 0 20px #00ffc6; /* Neon glow effect */
+    text-align: center;
+    color: #00ffc6; /* Neon cyan for headings */
+    text-shadow: 0 0 10px #00ffc6, 0 0 20px #00ffc6; /* Neon glow effect */
 }
 
 h1 {
-  margin: 30px 0;
-  font-size: 2.5rem;
+    margin: 30px 0;
+    font-size: 2.5rem;
 }
 
 h2 {
-  margin: 20px 0;
-  font-size: 1.75rem;
+    margin: 20px 0;
+    font-size: 1.75rem;
 }
 
 .container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.05); /* Transparent white */
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 255, 198, 0.15), 0 0 20px rgba(0, 255, 198, 0.2); /* Futuristic glowing shadow */
-  backdrop-filter: blur(10px); /* Glassmorphism effect */
-  border: 1px solid rgba(0, 255, 198, 0.2); /* Soft neon border */
-  color: #fff;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.05); /* Transparent white */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 255, 198, 0.15), 0 0 20px rgba(0, 255, 198, 0.2); /* Futuristic glowing shadow */
+    backdrop-filter: blur(10px); /* Glassmorphism effect */
+    border: 1px solid rgba(0, 255, 198, 0.2); /* Soft neon border */
+    color: #fff;
 }
 
 ul {
-  list-style: none;
-  padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 li {
-  background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
-  margin: 15px 0;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 255, 198, 0.15); /* Neon shadow */
-  transition: transform 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+    margin: 15px 0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 15px rgba(0, 255, 198, 0.15); /* Neon shadow */
+    transition: transform 0.3s ease-in-out;
 }
 
 li:hover {
-  transform: translateY(-5px) scale(1.02); /* Hover effect for floating feel */
+    transform: translateY(-5px) scale(1.02); /* Hover effect for floating feel */
 }
 
 button {
-  background: linear-gradient(45deg, #00ffc6, #007bff); /* Futuristic gradient */
-  color: white;
-  border: none;
-  padding: 12px 18px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-right: 10px;
-  font-size: 1rem;
-  transition: background 0.3s, transform 0.3s;
-  box-shadow: 0 4px 12px rgba(0, 255, 198, 0.3); /* Neon button shadow */
+    background: linear-gradient(45deg, #00ffc6, #007bff); /* Futuristic gradient */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-right: 10px;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 255, 198, 0.3); /* Neon button shadow */
 }
 
 button:hover {
-  background: linear-gradient(45deg, #007bff, #00ffc6);
-  transform: translateY(-3px); /* Lift effect on hover */
+    background: linear-gradient(45deg, #007bff, #00ffc6);
+    transform: translateY(-3px); /* Lift effect on hover */
 }
 
 input[type="text"],
 input[type="date"],
 textarea,
 select {
-  width: 100%;
-  padding: 15px;
-  margin: 10px 0;
-  border: 1px solid rgba(0, 255, 198, 0.3); /* Neon border */
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
-  color: #fff; /* White text color */
-  box-shadow: 0 0 10px rgba(0, 255, 198, 0.2); /* Soft glow */
-  transition: border-color 0.3s, box-shadow 0.3s;
-  cursor: pointer; /* Pointer cursor on hover */
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 255, 198, 0.3); /* Neon border */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.2); /* Soft glow */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Pointer cursor on hover */
 }
 
 input[type="text"]:focus,
 input[type="date"]:focus,
 textarea:focus,
 select:focus {
-  border-color: #00ffc6; /* Bright neon border on focus */
-  box-shadow: 0 0 15px rgba(0, 255, 198, 0.4); /* Glow effect on focus */
-  outline: none;
+    border-color: #00ffc6; /* Bright neon border on focus */
+    box-shadow: 0 0 15px rgba(0, 255, 198, 0.4); /* Glow effect on focus */
+    outline: none;
 }
 
 /* Dropdown Options Styles */
 select {
-  cursor: pointer; /* Pointer cursor on select */
+    cursor: pointer; /* Pointer cursor on select */
 }
 
 /* Change the color of the select options when opened */
 select option {
-  background-color: #1f1f1f; /* Dark background for options */
-  color: #00ffc6; /* Neon cyan text for options */
+    background-color: #1f1f1f; /* Dark background for options */
+    color: #00ffc6; /* Neon cyan text for options */
 }
 
 select option:hover {
-  background-color: rgba(0, 255, 198, 0.3); /* Highlight on hover */
-  color: #000; /* Change text color on hover */
+    background-color: rgba(0, 255, 198, 0.3); /* Highlight on hover */
+    color: #000; /* Change text color on hover */
 }
 
 form {
-  margin-bottom: 30px;
-  display: flex;
-  flex-wrap: wrap; /* Ensure form elements wrap on smaller screens */
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap; /* Ensure form elements wrap on smaller screens */
 }
 
 input[type="text"],
 input[type="date"],
 textarea,
 select {
-  flex: 1 1 100%; /* Make input fields take full width by default */
-  max-width: 100%; /* Ensure no overflow */
+    flex: 1 1 100%; /* Make input fields take full width by default */
+    max-width: 100%; /* Ensure no overflow */
 }
 
 button {
-  flex: 1 1 auto; /* Allow buttons to resize properly */
-  max-width: 48%; /* Adjust width to prevent button overflow */
-  margin-bottom: 10px;
+    flex: 1 1 auto; /* Allow buttons to resize properly */
+    max-width: 48%; /* Adjust width to prevent button overflow */
+    margin-bottom: 10px;
 }
 
 /* Print Styles */
 @media print {
-  body {
-    background-color: #ffffff; /* Change to white or any other color for printing */
-    color: #000; /* Change text color to black for readability */
-  }
+    body {
+        background-color: #ffffff; /* Change to white or any other color for printing */
+        color: #000; /* Change text color to black for readability */
+    }
 
-  h1, h2 {
-    color: #000; /* Black headings for print */
-    text-shadow: none; /* Remove text shadow for print */
-  }
+    h1, h2 {
+        color: #000; /* Black headings for print */
+        text-shadow: none; /* Remove text shadow for print */
+    }
 
-  .container {
-    background: transparent; /* Remove the background for printing */
-    box-shadow: none; /* Remove shadows for print */
-    border: none; /* Remove borders for print */
-  }
+    .container {
+        background: transparent; /* Remove the background for printing */
+        box-shadow: none; /* Remove shadows for print */
+        border: none; /* Remove borders for print */
+    }
 
-  button, /* Hide buttons during printing */
-  .no-print {
-    display: none;
-  }
+    button, /* Hide buttons during printing */
+    .no-print {
+        display: none;
+    }
+    form {         display: none; }
 }
 
 /* Responsive Design for Smaller Screens */
 @media (max-width: 768px) {
-  .container {
-    padding: 15px; /* Reduce padding for small screens */
-  }
+    .container {
+        padding: 15px; /* Reduce padding for small screens */
+    }
 
-  button {
-    max-width: 100%; /* Ensure buttons take full width on small screens */
-    margin-right: 0; /* Remove right margin */
-  }
+    button {
+        max-width: 100%; /* Ensure buttons take full width on small screens */
+        margin-right: 0; /* Remove right margin */
+    }
 
-  input[type="text"],
-  input[type="date"],
-  textarea,
-  select {
-    margin: 10px 0;
-  }
+    input[type="text"],
+    input[type="date"],
+    textarea,
+    select {
+        margin: 10px 0;
+    }
 }
