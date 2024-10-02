@@ -62,7 +62,7 @@ const TaskForm = ({ addTask, updateTask, currentTask, setCurrentTask, setShowTas
                 onChange={(e) => setDueDate(e.target.value)}
                 required
             />
-            <button id="btn-add" type="submit">{currentTask ? 'Update Task' : 'Add Task'}</button>
+            <button type="submit">{currentTask ? 'Update Task' : 'Add Task'}</button>
             {currentTask && <button type="button" onClick={() => setCurrentTask(null)}>Cancel</button>}
 
         </form>
