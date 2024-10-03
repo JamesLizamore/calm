@@ -3,9 +3,16 @@ import React from 'react';
 const TaskItem = ({ task, deleteTask, setCurrentTask }) => {
     // Function to format the task due date
     const formatDate = (date) => {
-        return date ? new Date(date).toLocaleDateString() : 'No due date'; // Return formatted date or default message
-    };
+        if (!date) return 'No due date';
 
+        // format date in RSA date format
+        const dateObj = new Date(date);
+        const year = dateObj.getFullYear();
+        const month = String(dateObj.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const day = String(dateObj.getDate()).padStart(2, '0');
+
+        return `${year}/${month}/${day}`;
+    };
     return (
         <li>
             {/* Display task title */}

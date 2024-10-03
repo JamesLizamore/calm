@@ -12,6 +12,13 @@ body {
     align-items: center;
 }
 
+#pizza{
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .btn-add {
     display: flex;
     justify-content: center;
@@ -150,6 +157,7 @@ button {
         background-color: #ffffff; /* Change to white or any other color for printing */
         color: #000; /* Change text color to black for readability */
     }
+    
 
     h1, h2 {
         color: #000; /* Black headings for print */
@@ -166,7 +174,10 @@ button {
     .no-print {
         display: none;
     }
-    form {         display: none; }
+
+    form {
+        display: none;
+    }
 }
 
 /* Responsive Design for Smaller Screens */
