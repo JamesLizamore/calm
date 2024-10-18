@@ -198,3 +198,119 @@ button {
         margin: 10px 0;
     }
 }
+
+/* Navbar Styles */
+.navbar {
+    background-color: #1f1f1f;
+    padding: 10px;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar a, .navbar button {
+    color: #00ffc6;
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.navbar a:hover, .navbar button:hover {
+    color: #007bff;
+}
+
+form {
+    margin-bottom: 30px;
+    display: block; /* Change to block to stack items vertically */
+}
+
+input[type="text"],
+input[type="date"],
+textarea,
+select {
+    width: 100%; /* Full width for inputs */
+    padding: 15px;
+    margin: 10px 0; /* Space between inputs */
+    border: 1px solid rgba(0, 255, 198, 0.3); /* Neon border */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.2); /* Soft glow */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Button Styles */
+button {
+    width: 100%; /* Full width for buttons */
+    margin: 10px 0; /* Space between buttons */
+    background: linear-gradient(45deg, #00ffc6, #007bff); /* Futuristic gradient */
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, transform 0.3s;
+    box-shadow: 0 4px 12px rgba(0, 255, 198, 0.3); /* Neon button shadow */
+}
+
+/* Adjust button hover effects */
+button:hover {
+    background: linear-gradient(45deg, #007bff, #00ffc6);
+    transform: translateY(-3px); /* Lift effect on hover */
+}
+.notification {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50; /* Success background color */
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; /* Hidden by default */
+    visibility: hidden;
+}
+
+.notification.show {
+    opacity: 1; /* Show notification */
+    visibility: visible;
+}
+
+.notification.error {
+    background-color: #f44336; /* Error background color */
+}
+
+input[type="email"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid rgba(0, 255, 198, 0.3); /* Neon border */
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent background */
+    color: #fff; /* White text color */
+    box-shadow: 0 0 10px rgba(0, 255, 198, 0.2); /* Soft glow */
+    transition: border-color 0.3s, box-shadow 0.3s;
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+input[type="email"]:focus {
+    border-color: #00ffc6; /* Bright neon border on focus */
+    box-shadow: 0 0 15px rgba(0, 255, 198, 0.4); /* Glow effect on focus */
+    outline: none;
+}
