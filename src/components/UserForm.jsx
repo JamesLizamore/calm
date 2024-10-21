@@ -1,4 +1,3 @@
-// UserForm.jsx
 import React, { useState, useEffect } from 'react';
 
 const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
@@ -8,7 +7,8 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
         cohort: '',
         email: '',
         role: '',
-        team: ''
+        team: '',
+        firebaseUID: ''
     });
 
     useEffect(() => {
@@ -21,7 +21,8 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
                 cohort: '',
                 email: '',
                 role: '',
-                team: ''
+                team: '',
+                firebaseUID: ''
             });
         }
     }, [currentUser]);
@@ -33,10 +34,27 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Ensure email is present
+        if (!userData.email) {
+            alert("Email is required");
+            return;
+        }
+
+        // Set non-required fields to "not set" if they are empty
+        const updatedUserData = {
+            ...userData,
+            userName: userData.userName || "not set",
+            cohort: userData.cohort || "not set",
+            role: userData.role || "not set",
+            team: userData.team || "not set",
+            firebaseUID: userData.firebaseUID || "not set"
+        };
+
         if (currentUser) {
-            updateUser(userData);
+            updateUser(updatedUserData);
         } else {
-            addUser(userData);
+            addUser(updatedUserData);
         }
     };
 
@@ -52,7 +70,6 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
                 placeholder="User Name"
                 value={userData.userName}
                 onChange={handleChange}
-                required
             />
             <input
                 type="email"
@@ -81,6 +98,13 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
                 name="team"
                 placeholder="Team"
                 value={userData.team}
+                onChange={handleChange}
+            />
+            <input
+                type="text"
+                name="firebaseUID"
+                placeholder="Firebase UID"
+                value={userData.firebaseUID}
                 onChange={handleChange}
             />
 

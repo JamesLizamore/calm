@@ -8,10 +8,9 @@ const UserList = () => {
     const [filteredUsers, setFilteredUsers] = useState([]);
     const [cohortFilter, setCohortFilter] = useState('');
     const [roleFilter, setRoleFilter] = useState('');
-    const [statusFilter, setStatusFilter] = useState('');
     const [sortField, setSortField] = useState('');
     const [sortDirection, setSortDirection] = useState('asc');
-    const [editingUser, setEditingUser] = useState(null); // New state for editing user
+    const [editingUser, setEditingUser] = useState(null);
 
     // Fetch all users
     useEffect(() => {
@@ -38,11 +37,7 @@ const UserList = () => {
         if (roleFilter) {
             filtered = filtered.filter(user => user.role.toLowerCase() === roleFilter.toLowerCase());
         }
-
-        if (statusFilter) {
-            filtered = filtered.filter(user => user.status.toLowerCase() === statusFilter.toLowerCase());
-        }
-
+        
         if (sortField) {
             filtered.sort((a, b) => {
                 const fieldA = a[sortField].toString().toLowerCase();
@@ -54,13 +49,19 @@ const UserList = () => {
         }
 
         setFilteredUsers(filtered);
-    }, [cohortFilter, roleFilter, statusFilter, sortField, sortDirection, users]);
+    }, [cohortFilter, roleFilter, sortField, sortDirection, users]);
+
+    // Function to handle sorting
+    const handleSortChange = (field) => {
+        setSortField(field);
+        setSortDirection(prevDirection => prevDirection === 'asc' ? 'desc' : 'asc');
+    };
 
     // Add a new user (POST)
     const handleAddUser = async (newUser) => {
         try {
             const response = await axios.post('http://localhost:5141/user', newUser);
-            setUsers([...users, response.data]);
+            setUsers((prevUsers) => [...prevUsers, response.data]);
         } catch (error) {
             console.error('Error adding user:', error);
         }
@@ -71,7 +72,7 @@ const UserList = () => {
         try {
             const response = await axios.put(`http://localhost:5141/user/${updatedUser.userId}`, updatedUser);
             setUsers(users.map(user => (user.userId === updatedUser.userId ? response.data : user)));
-            setEditingUser(null); // Clear the editing state
+            setEditingUser(null);
         } catch (error) {
             console.error('Error updating user:', error);
         }
@@ -108,15 +109,10 @@ const UserList = () => {
                     <input type="text" value={roleFilter} onChange={(e) => setRoleFilter(e.target.value)}
                            placeholder="Enter Role"/>
                 </label>
-                <label>
-                    Filter by Status:
-                    <input type="text" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
-                           placeholder="Enter Status"/>
-                </label>
+                
                 <button onClick={() => {
                     setCohortFilter('');
                     setRoleFilter('');
-                    setStatusFilter('');
                 }}>Clear Filters
                 </button>
             </div>
@@ -129,8 +125,6 @@ const UserList = () => {
                     Cohort {sortField === 'cohort' ? (sortDirection === 'asc' ? '↑' : '↓') : ''}</button>
                 <button onClick={() => handleSortChange('role')}>Sort by
                     Role {sortField === 'role' ? (sortDirection === 'asc' ? '↑' : '↓') : ''}</button>
-                <button onClick={() => handleSortChange('status')}>Sort by
-                    Status {sortField === 'status' ? (sortDirection === 'asc' ? '↑' : '↓') : ''}</button>
                 <button onClick={() => {
                     setSortField('');
                     setSortDirection('asc');
@@ -155,14 +149,12 @@ const UserList = () => {
             )}
 
             {/* User Form for Adding/Editing */}
-
             <UserForm
-                addUser={handleAddUser}       // Fix: Match the prop to the function name
-                updateUser={handleEditUser}   // Fix: Match the prop to the function name
-                currentUser={editingUser}     // Pass the current user for editing
-                setCurrentUser={setEditingUser}  // Pass the state updater for clearing the form
+                addUser={handleAddUser}
+                updateUser={handleEditUser}
+                currentUser={editingUser}
+                setCurrentUser={setEditingUser}
             />
-            
         </div>
     );
 };
