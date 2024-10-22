@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 
-const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
-    const [userData, setUserData] = useState({
-        userId: '',
+const UserForm = ({addUser, updateUser, currentUser, setCurrentUser}) => {
+    const [formData, setFormData] = useState({
         userName: '',
         cohort: '',
         email: '',
@@ -11,12 +10,12 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
         firebaseUID: ''
     });
 
+    // Pre-fill form if editing a user
     useEffect(() => {
         if (currentUser) {
-            setUserData(currentUser);
+            setFormData(currentUser);
         } else {
-            setUserData({
-                userId: '',
+            setFormData({
                 userName: '',
                 cohort: '',
                 email: '',
@@ -28,38 +27,23 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
     }, [currentUser]);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUserData((prevData) => ({ ...prevData, [name]: value }));
+        const {name, value} = e.target;
+        setFormData(prevState => ({...prevState, [name]: value}));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Ensure email is present
-        if (!userData.email) {
-            alert("Email is required");
-            return;
-        }
-
-        // Set non-required fields to "not set" if they are empty
-        const updatedUserData = {
-            ...userData,
-            userName: userData.userName || "not set",
-            cohort: userData.cohort || "not set",
-            role: userData.role || "not set",
-            team: userData.team || "not set",
-            firebaseUID: userData.firebaseUID || "not set"
-        };
-
+        // If editing, update the user
         if (currentUser) {
-            updateUser(updatedUserData);
+            updateUser(formData);
         } else {
-            addUser(updatedUserData);
+            addUser(formData);
         }
     };
 
     const handleCancel = () => {
-        setCurrentUser(null);  // Clear the current user when canceling
+        setCurrentUser(null);  // Reset the form and cancel edit
     };
 
     return (
@@ -68,14 +52,14 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
                 type="text"
                 name="userName"
                 placeholder="User Name"
-                value={userData.userName}
+                value={formData.userName}
                 onChange={handleChange}
             />
             <input
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={userData.email}
+                value={formData.email}
                 onChange={handleChange}
                 required
             />
@@ -83,31 +67,32 @@ const UserForm = ({ addUser, updateUser, currentUser, setCurrentUser }) => {
                 type="text"
                 name="cohort"
                 placeholder="Cohort"
-                value={userData.cohort}
+                value={formData.cohort}
                 onChange={handleChange}
             />
             <input
                 type="text"
                 name="role"
                 placeholder="Role"
-                value={userData.role}
+                value={formData.role}
                 onChange={handleChange}
             />
             <input
                 type="text"
                 name="team"
                 placeholder="Team"
-                value={userData.team}
+                value={formData.team}
                 onChange={handleChange}
             />
             <input
                 type="text"
                 name="firebaseUID"
                 placeholder="Firebase UID"
-                value={userData.firebaseUID}
+                value={formData.firebaseUID}
                 onChange={handleChange}
             />
 
+            {/* Submit and Cancel Buttons */}
             <button type="submit">{currentUser ? 'Update User' : 'Add User'}</button>
             {currentUser && <button type="button" onClick={handleCancel}>Cancel</button>}
         </form>
