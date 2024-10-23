@@ -1,6 +1,21 @@
 import React from 'react';
 
-const UserItem = ({ user, onDelete, onEdit }) => {
+const UserItem = ({ user, deleteTask, onEdit }) => {
+    
+    const handleDelete = () => {
+        const confirmDelete = window.confirm(`Are you sure you want to delete the user: "${user.userName}"?`);
+        if (confirmDelete) {
+            deleteTask(user.userId);
+        }
+    }
+    
+    const handleEdit = () => {
+        const confirmEdit = window.confirm('Are you sure you want to edit the user: "${user.userName}"?');
+        if (confirmEdit) {
+            onEdit();
+        }
+    }
+    
     return (
         <li>
             <div>
@@ -13,8 +28,8 @@ const UserItem = ({ user, onDelete, onEdit }) => {
 
             {/* Buttons for editing and deleting */}
             <div>
-                <button onClick={onEdit}>Edit</button>
-                <button onClick={onDelete}>Delete</button>
+                <button onClick={handleEdit}>Edit</button>
+                <button onClick={handleDelete}>Delete</button>
             </div>
         </li>
     );

@@ -20,6 +20,13 @@ const TaskItem = ({ task, deleteTask, setCurrentTask }) => {
             deleteTask(task.id); // Proceed with task deletion if confirmed
         }
     };
+    
+    const handleEdit = () => {
+        const confirmEdit = window.confirm(`Are you sure you want to edit the task "${task.title}"?`);
+        if (confirmEdit) {
+            setCurrentTask(task);
+        }
+    }
 
     return (
         <li>
@@ -50,7 +57,7 @@ const TaskItem = ({ task, deleteTask, setCurrentTask }) => {
             )}
 
             {/* Buttons for editing or deleting */}
-            <button onClick={() => setCurrentTask(task)}>Edit</button>
+            <button onClick={() => handleEdit()}>Edit</button>
             {/* Confirmation before deletion */}
             <button onClick={handleDelete}>Delete</button>
         </li>

@@ -17,12 +17,12 @@ const TaskForm = ({ addTask, updateTask, currentTask, setCurrentTask }) => {
 
     useEffect(() => {
         if (currentTask) {
-            setTitle(currentTask.title);
+            setTitle(currentTask.title || 'Not set');
             setDescription(currentTask.description || 'Not set');
             setCategory(currentTask.category || 'Not set');
             setStatus(currentTask.status || 'Pending');
-            setStartDate(currentTask.startDate ? new Date(currentTask.startDate).toISOString().split('T')[0] : '0001-01-01');
-            setDueDate(currentTask.dueDate ? new Date(currentTask.dueDate).toISOString().split('T')[0] : '0001-01-01');
+            setStartDate(currentTask.startDate ? new Date(currentTask.startDate).toISOString().split('T')[0] : '1111-11-11');
+            setDueDate(currentTask.dueDate ? new Date(currentTask.dueDate).toISOString().split('T')[0] : '1111-11-11');
             setAssignedTo(currentTask.assignedTo || 'Not set');
             setAssignedBy(currentTask.assignedBy || 'Not set');
             setDifficulty(currentTask.difficulty || 'Not set');
@@ -31,20 +31,20 @@ const TaskForm = ({ addTask, updateTask, currentTask, setCurrentTask }) => {
             setPercentComplete(currentTask.percentComplete || -2);
             setFeedback(currentTask.feedback || 'Not set');
         } else {
-            // Reset form
-            setTitle('');
-            setDescription('');
-            setCategory('');
+            // Reset form with default values
+            setTitle('Not set');
+            setDescription('Not set');
+            setCategory('Not set');
             setStatus('Pending');
-            setStartDate('');
-            setDueDate('');
-            setAssignedTo('');
-            setAssignedBy('');
-            setDifficulty('');
-            setEstimatedTime(0);
-            setActualTime(0);
-            setPercentComplete(0);
-            setFeedback('');
+            setStartDate('1111-11-11');
+            setDueDate('1111-11-11');
+            setAssignedTo('Not set');
+            setAssignedBy('Not set');
+            setDifficulty('Not set');
+            setEstimatedTime(-2);
+            setActualTime(-2);
+            setPercentComplete(-2);
+            setFeedback('Not set');
         }
     }, [currentTask]);
 
@@ -52,11 +52,11 @@ const TaskForm = ({ addTask, updateTask, currentTask, setCurrentTask }) => {
         e.preventDefault();
 
         // Format the dates to YYYY-MM-DD before submitting
-        const formattedStartDate = startDate ? new Date(startDate).toISOString().split('T')[0] : '0001-01-01';
-        const formattedDueDate = dueDate ? new Date(dueDate).toISOString().split('T')[0] : '0001-01-01';
+        const formattedStartDate = startDate ? new Date(startDate).toISOString().split('T')[0] : '1111-11-11';
+        const formattedDueDate = dueDate ? new Date(dueDate).toISOString().split('T')[0] : '1111-11-11';
 
         const task = {
-            title: title,
+            title: title || 'Not set',
             description: description || 'Not set',
             category: category || 'Not set',
             status,
@@ -78,19 +78,19 @@ const TaskForm = ({ addTask, updateTask, currentTask, setCurrentTask }) => {
         }
 
         // Reset form after submission
-        setTitle('');
-        setDescription('');
-        setCategory('');
+        setTitle('Not set');
+        setDescription('Not set');
+        setCategory('Not set');
         setStatus('Pending');
-        setStartDate('');
-        setDueDate('');
-        setAssignedTo('');
-        setAssignedBy('');
-        setDifficulty('');
-        setEstimatedTime(0);
-        setActualTime(0);
-        setPercentComplete(0);
-        setFeedback('');
+        setStartDate('1111-11-11');
+        setDueDate('1111-11-11');
+        setAssignedTo('Not set');
+        setAssignedBy('Not set');
+        setDifficulty('Not set');
+        setEstimatedTime(-2);
+        setActualTime(-2);
+        setPercentComplete(-2);
+        setFeedback('Not set');
     };
 
     return (

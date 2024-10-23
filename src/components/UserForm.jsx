@@ -34,14 +34,23 @@ const UserForm = ({addUser, updateUser, currentUser, setCurrentUser}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // Replace empty strings with "Not set"
+        const modifiedData = {
+            ...formData,
+            userName: formData.userName || 'Not set',
+            cohort: formData.cohort || 'Not set',
+            role: formData.role || 'Not set',
+            team: formData.team || 'Not set',
+            firebaseUID: formData.firebaseUID || 'Not set',
+        };
+
         // If editing, update the user
         if (currentUser) {
-            updateUser(formData);
+            updateUser(modifiedData);
         } else {
-            addUser(formData);
+            addUser(modifiedData);
         }
     };
-
     const handleCancel = () => {
         setCurrentUser(null);  // Reset the form and cancel edit
     };

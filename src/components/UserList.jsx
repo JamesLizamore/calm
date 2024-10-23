@@ -48,7 +48,7 @@ const UserList = () => {
     };
 
     // Delete a user
-    const handleDeleteUser = async (userId) => {
+    const deleteUser = async (userId) => {
         try {
             await axios.delete(`http://localhost:5141/user/${userId}`);
             alert('User deleted successfully!')
@@ -68,7 +68,7 @@ const UserList = () => {
                     <UserItem
                         key={user.userId}
                         user={user}
-                        onDelete={() => handleDeleteUser(user.userId)}
+                        deleteTask={() => deleteUser(user.userId)}
                         onEdit={() => setEditingUser(user)}
                     />
                 ))}
